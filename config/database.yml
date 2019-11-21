@@ -1,0 +1,11 @@
+development:
+    adapter: sqlite3
+    database: development_domain_portfolio.db
+    pool: 5
+    timeout: 5000
+
+test:
+    adapter: sqlite3
+    database: test_domain_portfolio.db
+    pool: 5
+    timeout: 5000

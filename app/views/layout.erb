@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+  <title>Domain Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">  <link rel="stylesheet" href="/stylesheets/main.css" />
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="pure-menu pure-menu-horizontal main-menu">
+    <a href="#" class="pure-menu-heading pure-menu-link">Domain Dashboard</a>
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Domains</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Hosting Services</a></li>
+        <% if logged_in?%>
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Logout</a></li>
+        <% else %>
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Login</a></li>
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Signup</a></li>
+        <% end %>
+
+    </ul>
+</div>
+  <section class="wrapper">
+    <% if flash[:message]%>
+      <%= flash[:message] %>
+    <%end%>
+
+      <%= yield %>
+  </section>
+    <footer class="branding">
+      <small>&copy; 2019 <strong>Domain Dashboard</strong></small>
+    </footer>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <!--[if lt IE 7]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+  <![endif]-->
+</body>

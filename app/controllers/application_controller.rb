@@ -1,11 +1,13 @@
+require 'sinatra/base'
+require 'sinatra/flash'
 class ApplicationController < Sinatra::Base
+  enable :sessions
+  register Sinatra::Flash
 
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    enable :sessions
     set :session_secret, "secret"
-    register Sinatra::Flash
   end
 
   get "/" do
@@ -18,7 +20,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      User.find(session[:user_id])
+      @current_user ||= User.find(session[:user_id])
     end
   end
 
