@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_142737) do
+ActiveRecord::Schema.define(version: 2019_11_21_175554) do
+
+  create_table "domain_names", force: :cascade do |t|
+    t.string "domain_name"
+    t.date "expiry_date"
+    t.integer "user_id"
+    t.integer "service_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "service_name"
+    t.date "expiry_date"
+    t.integer "user_id"
+  end
+
+  create_table "user_domain_names", force: :cascade do |t|
+    t.integer "domain_name_id"
+    t.integer "user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"

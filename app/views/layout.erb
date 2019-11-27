@@ -11,36 +11,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">  <link rel="stylesheet" href="/stylesheets/main.css" />
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<div class="pure-menu pure-menu-horizontal main-menu">
-    <a href="#" class="pure-menu-heading pure-menu-link">Domain Dashboard</a>
-    <ul class="pure-menu-list">
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Domains</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Hosting Services</a></li>
-        <% if logged_in?%>
-          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Logout</a></li>
-        <% else %>
-          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Login</a></li>
-          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Signup</a></li>
-        <% end %>
-
-    </ul>
+  <nav class="pa3 pa4-ns">
+    <a class="link dim black b f1 f-headline-ns tc db mb3 mb4-ns" href="#" title="Home">Domain Dashboard</a>
+    <div class="tc pb3">
+      <a class="link dim gray f6 f5-ns dib mr3" href="/domains" title="Domains">Domains</a>
+      <a class="link dim gray f6 f5-ns dib mr3" href="/services" title="Services">Services</a>
+      <% if logged_in?%>
+        <a class="link dim gray f6 f5-ns dib mr3" href="/logout" title="Logout">Logout</a>
+      <% else %>
+        <a class="link dim gray f6 f5-ns dib" href="/signup" title="Signup">Signup</a>
+        <span>   </span>
+        <a class="link dim gray f6 f5-ns dib" href="/login" title="Login">Login</a>
+      <% end %>
+    </div>
+  </nav>
+  <% if flash %>
+  <div class="flex items-center justify-center pa4 bg-lightest-blue navy">
+  <svg class="w1" data-icon="info" viewBox="0 0 32 32" style="fill:currentcolor">
+    <title>info icon</title>
+    <path d="M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6"></path>
+  </svg>
+  <% flash.keys.each do |type| %>
+  <span class="lh-title ml3 flash <%= type %> alert-box radius"></span>
+  <%= flash[type] %>
+  <% end %>
 </div>
-  <section class="wrapper">
-    <% if flash[:message]%>
-      <%= flash[:message] %>
-    <%end%>
-
+  <% end %>
       <%= yield %>
-  </section>
-    <footer class="branding">
-      <small>&copy; 2019 <strong>Domain Dashboard</strong></small>
-    </footer>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+ <footer class="bg-near-black white-80 pv5 pv6-l ph4">
+  <p class="f6"><span class="dib mr4 mr5-ns">©2019 Domain Dashboard</span>
+    <a class="link white-80 hover-light-purple" href="/terms">Terms</a> /
+    <a class="link white-80 hover-gold" href="/privacy"> Privacy </a> /
+    <a class="link white-80 hover-green" href="#">hi@yourcompany.com </a>
+  </p>
+</footer>
+
+
   <!--[if lt IE 7]>
     <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
     <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>

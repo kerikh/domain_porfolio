@@ -14,7 +14,6 @@ gem 'require_all' #=> Helps to load dependencies
 gem 'sqlite3'
 gem 'thin'
 gem 'shotgun'
-gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem 'rack-flash3'
@@ -28,4 +27,7 @@ group :development, :test do
   gem "sqlite3"
   gem "rack-test"
   gem "database_cleaner"
+  gem "launchy"
+  gem "simplecov"
+  gem "pry"
 end

@@ -1,0 +1,18 @@
+<article class="pa4 black-80">
+<h1>Edit Domain Name</h1>
+  <form action="/domains/<%= @domain.id %>" method="post" >
+    <input type="hidden" name="_method" id="hidden" value="PATCH">
+    <fieldset id="edit-domain-name" class="ba b--transparent ph0 mh0">
+      <legend class="ph0 mh0 fw6 clip">Edit Domain Name</legend>
+      <div class="mt3">
+        <label class="db fw4 lh-copy f6" for="domain_name">Domain Name</label>
+        <input class="pa2 input-reset ba bg-transparent w-100 measure" type="text" name="domain_name"  id="domain_name" value="<%= @domain.domain_name %>">
+      </div>
+      <div class="mt3">
+        <label class="db fw4 lh-copy f6" for="expiry_date">Expiration Date:</label>
+        <input class="b pa2 input-reset ba bg-transparent" type="date" name="expiry_date"  id="expiry_date" value="<%= @domain.expiry_date %>">
+      </div>
+    </fieldset>
+    <div class="mt3"><input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Save Changes"></div>
+  </form>
+</article>

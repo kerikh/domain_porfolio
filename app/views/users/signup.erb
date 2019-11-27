@@ -1,15 +1,21 @@
-<h1>Sign Up</h1><br><br><br>
-
-<form class="pure-form pure-form-aligned" method="post" action="/signup">
-  <div class="pure-control-group">
-    <input type="text" name="username" placeholder="Username:"><br><br>
-  </div>
-  <div class="pure-control-group">
-    <input type="email" name="email" placeholder="Email:"><br><br>
-  </div>
-  <div class="pure-control-group">
-    <input type="password" name="password" placeholder="Password:"><br><br>
-  </div>
-  <button type="submit" class="pure-button button-large">SignUp</button></form>
-<br><br>
-<a href="/login">Login</a><br>
+<article class="pa4 black-80">
+<h1>Sign Up</h1>
+  <form action="/signup" method="post" accept-charset="utf-8">
+    <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+      <legend class="ph0 mh0 fw6 clip">Sign Up</legend>
+      <div class="mt3">
+        <label class="db fw4 lh-copy f6" for="username">Username</label>
+        <input class="pa2 input-reset ba bg-transparent w-100 measure" type="username" name="username"  id="username">
+      </div>
+      <div class="mt3">
+        <label class="db fw4 lh-copy f6" for="email">Email Address:</label>
+        <input class="pa2 input-reset ba bg-transparent w-100 measure" type="email" name="email"  id="email">
+      </div>
+      <div class="mt3">
+        <label class="db fw4 lh-copy f6" for="password">Password</label>
+        <input class="b pa2 input-reset ba bg-transparent" type="password" name="password"  id="password">
+      </div>
+    </fieldset>
+    <div class="mt3"><input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Sign Up"></div>
+  </form>
+</article>

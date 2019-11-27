@@ -5,12 +5,13 @@ class ApplicationController < Sinatra::Base
   register Sinatra::Flash
 
   configure do
-    set :public_folder, 'public'
+    set :public_folder, 'public', 'node_modules'
     set :views, 'app/views'
     set :session_secret, "secret"
   end
 
   get "/" do
+    authenticate_user
     erb :index
   end
 
@@ -20,7 +21,14 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      @current_user ||= User.find(session[:user_id])
+      @current_user ||= User.find(id: session[:user_id])
+    end
+
+    def authenticate_user
+      if !logged_in?
+        flash[:message] = "You must be logged in to view the page."
+        redirect "/login"
+      end
     end
   end
 
