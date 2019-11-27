@@ -1,3 +1,52 @@
 <% if !logged_in? %>
 <h2>Signup or Login to get started managing your domain names today.
+<%else%>
+ <article class="pa3 pa5-ns" data-name="slab-stat">
+  <h1><%= current_user.username %>'s Dashboard </h1>
+  <dl class="dib mr5">
+    <dd class="f6 f5-ns b ml0"># of Domain Names</dd>
+    <dd class="f3 f2-ns b ml0"><%= current_user.domain_names.count %></dd>
+  </dl>
+  <dl class="dib mr5">
+    <dd class="f6 f5-ns b ml0"># of Active Services</dd>
+    <dd class="f3 f2-ns b ml0"><%= current_user.services.count %></dd>
+  </dl>
+  <div>
+  <dl class="dib mr5">
+    <dd class="f6 f5-ns b ml0">Services Expiring Soon</dd>
+    <% current_user.services.each do |service|%>
+  <% if service.expiry_date - DateTime.now <= 30 %>
+    <dd class="f3 f2-ns b ml0"><%= service.service_name %></dd>
+    <%else%>
+    <dd class="f3 f2-ns b ml0">There are no services expiring within 30 days</dd>
+
+    <%end%><%end%>
+  </dl>
+
+  <dl class="dib mr5">
+    <dd class="f6 f5-ns b ml0">Domains Expiring Soon</dd>
+    <% current_user.domain_names.each do |domain|%>
+  <% if domain.expiry_date - DateTime.now <= 30 %>
+    <dd class="f3 f2-ns b ml0"><%= domain.domain_name %></dd>
+    <%else%>
+    <dd class="f3 f2-ns b ml0">There are no domain names expiring within 30 days</dd>
+
+    <%end%><%end%>
+  </dl>
+  </div>
+  <div>
+  <dl class="dib mr5">
+    <ul class="list ph3 ph5-ns pv4">
+  <li class="dib mr1 mb2"><a href="/domains/new" class="f6 f5-ns b db pa2 link dim dark-gray ba b--black-20">Add Domain Name</a></li>
+</ul>
+  </dl>
+
+  <dl class="dib mr5">
+    <ul class="list ph3 ph5-ns pv4">
+  <li class="dib mr1 mb2"><a href="/services/new" class="f6 f5-ns b db pa2 link dim dark-gray ba b--black-20">Add New Service</a></li>
+</ul>
+  </dl>
+</div>
+</article>
+
 <%end%>

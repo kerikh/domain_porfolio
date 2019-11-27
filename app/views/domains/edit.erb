@@ -12,6 +12,13 @@
         <label class="db fw4 lh-copy f6" for="expiry_date">Expiration Date:</label>
         <input class="b pa2 input-reset ba bg-transparent" type="date" name="expiry_date"  id="expiry_date" value="<%= @domain.expiry_date %>">
       </div>
+      <div class="mt3">
+        <select class="pa2 input-reset ba bg-transparent w-100 measure" name="service_id"  id="service_id">
+        <% @services.each do |service|%>
+        <option value=<%=service.id%>><%= service.service_name %></option>
+        <%end%>
+        </select>
+      </div>
     </fieldset>
     <div class="mt3"><input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Save Changes"></div>
   </form>

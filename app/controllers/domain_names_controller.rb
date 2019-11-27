@@ -20,6 +20,7 @@ class DomainNamesController < ApplicationController
       @domain = DomainName.new
       @domain.domain_name = params[:domain_name]
       @domain.expiry_date = params[:expiry_date]
+      @domain.service_id = params[:service_id]
       @domain.user_id = session[:user_id]
       @domain.save
       if @domain
@@ -31,6 +32,9 @@ class DomainNamesController < ApplicationController
   get '/domains/:id' do
     authenticate_user
     @domain = DomainName.find_by_id(params[:id])
+    if @domain.service_id
+      @service = Service.find_by_id(@domain.service_id)
+    end
     erb :'domains/show'
   end
 

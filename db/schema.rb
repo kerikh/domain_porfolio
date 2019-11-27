@@ -25,11 +25,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_175554) do
     t.integer "user_id"
   end
 
-  create_table "user_domain_names", force: :cascade do |t|
-    t.integer "domain_name_id"
-    t.integer "user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
