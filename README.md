@@ -1,6 +1,6 @@
 Domain Portfolio Sinatra Project
 
-This app provides a basic Model-Views-Controller (MVC) interface to handle collections of Domain Name and Hosting/Misc services for domains. 
+This app provides a basic Model-Views-Controller (MVC) interface to handle collections of Domain Name and Hosting/Misc services for domains.
 
 Usage
 
