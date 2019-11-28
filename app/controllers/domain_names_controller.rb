@@ -16,15 +16,17 @@ class DomainNamesController < ApplicationController
     authenticate_user
     if params[:domain_name].empty?
       redirect '/domains/new'
+      flash[:error] = "A Domain MUST have a domain name."
     else
       @domain = DomainName.new
       @domain.domain_name = params[:domain_name]
       @domain.expiry_date = params[:expiry_date]
       @domain.service_id = params[:service_id]
-      @domain.user_id = session[:user_id]
+      @domain.user_id = current_user.id
       @domain.save
       if @domain
         redirect '/domains'
+        flash[:message] = "Your domain name has been added!"
       end
     end
   end
@@ -49,7 +51,7 @@ class DomainNamesController < ApplicationController
     end
   end
 
-  post '/domains/:id' do
+  patch '/domains/:id' do
     authenticate_user
       if params[:domain_name].empty? || params[:expiry_date].empty?
         redirect "/domains/#{params[:id]}/edit"
