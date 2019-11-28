@@ -1,4 +1,4 @@
-# Domain Portfolio Sinatra 
+# Domain Portfolio Sinatra
 
 ## Project
 
